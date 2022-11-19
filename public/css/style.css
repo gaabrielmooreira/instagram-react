@@ -195,6 +195,10 @@ body {
   margin-right: 6px;
 }
 
+.post .fundo .acoes ion-icon[name="heart"]{
+  color: #ED4956;
+}
+
 .post .fundo .curtidas {
   display: flex;
   align-items: center;

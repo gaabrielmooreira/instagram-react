@@ -29,29 +29,29 @@ const arrSugestoes = [
 
 export default function Sugestoes() {
     return (
-        <div class="sugestoes">
-            <div class="titulo">
+        <div className="sugestoes">
+            <div className="titulo">
                 Sugestões para você
                 <div>Ver tudo</div>
             </div>
 
-            {arrSugestoes.map((s) => <Sugestao imgUsuario={s.imgUsuario} nomeUsuario={s.nomeUsuario} razao={s.razao} />)}
+            {arrSugestoes.map((s) => <Sugestao key={s.nomeUsuario} imgUsuario={s.imgUsuario} nomeUsuario={s.nomeUsuario} razao={s.razao} />)}
         </div>
     )
 }
 
 function Sugestao(props) {
     return (
-        <div class="sugestao">
-            <div class="usuario">
+        <div className="sugestao">
+            <div className="usuario">
                 <img src={props.imgUsuario} />
-                <div class="texto">
-                    <div class="nome">{props.nomeUsuario}</div>
-                    <div class="razao">{props.razao}</div>
+                <div className="texto">
+                    <div className="nome">{props.nomeUsuario}</div>
+                    <div className="razao">{props.razao}</div>
                 </div>
             </div>
 
-            <div class="seguir">Seguir</div>
+            <div className="seguir">Seguir</div>
         </div>
     )
 }

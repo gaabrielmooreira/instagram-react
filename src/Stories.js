@@ -10,9 +10,9 @@ const arrStory = [
 ]
 export default function Stories() {
     return (
-        <div class="stories">
-            {arrStory.map((s)=> <Story imagem={s.imagem} usuario={s.usuario}/>)}
-            <div class="setinha">
+        <div className="stories">
+            {arrStory.map((s) => <Story key={s.usuario} imagem={s.imagem} usuario={s.usuario} />)}
+            <div className="setinha">
                 <ion-icon name="chevron-forward-circle"></ion-icon>
             </div>
         </div>
@@ -21,11 +21,11 @@ export default function Stories() {
 
 function Story(props) {
     return (
-        <div class="story">
-            <div class="imagem">
+        <div className="story">
+            <div className="imagem">
                 <img src={props.imagem} />
             </div>
-            <div class="usuario">
+            <div className="usuario">
                 {props.usuario}
             </div>
         </div>
