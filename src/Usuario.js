@@ -19,7 +19,8 @@ function UsuarioAcimaDasSugestoes(props) {
     const [imagem, setImagem] = React.useState(props.imgUsuario);
 
     function mudarApelido(){
-        setApelido(prompt("Qual seu novo apelido?"));
+        const resposta = prompt("Qual seu novo apelido?");
+        if(resposta) setApelido(resposta);
     }
 
     function mudarImagem(){

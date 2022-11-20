@@ -5,7 +5,11 @@ export default function Post(props) {
     const [iconeCurtirPost, setIconeCurtirPost] = React.useState("heart-outline");
     const [outrasCurtidas, setOutrasCurtidas] = React.useState(props.demaisCurtidas);
     function salvarPost() {
-        setIconeSalvarPost("bookmark");
+        if(iconeSalvarPost === "bookmark-outline"){
+            setIconeSalvarPost("bookmark");
+        } else {
+            setIconeSalvarPost("bookmark-outline");
+        }
     }
 
     function curtirPost() {
