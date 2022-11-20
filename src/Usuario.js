@@ -28,13 +28,13 @@ function UsuarioAcimaDasSugestoes(props) {
     }
 
     return (
-        <div className="usuario">
-            <img src={imagem} onClick={mudarImagem}/>
+        <div data-test="user" className="usuario">
+            <img data-test="profile-image" src={imagem} onClick={mudarImagem}/>
             <div className="texto">
                 <strong>{props.nomeUsuario}</strong>
                 <span>
-                    {apelido}
-                    <ion-icon name="pencil" onClick={mudarApelido}></ion-icon>
+                    <span data-test="name">{apelido}</span>
+                    <ion-icon data-test="edit-name" name="pencil" onClick={mudarApelido}></ion-icon>
                 </span>
             </div>
         </div>
