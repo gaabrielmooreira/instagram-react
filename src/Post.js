@@ -4,8 +4,12 @@ export default function Post(props) {
     const [iconeSalvarPost, setIconeSalvarPost] = React.useState("bookmark-outline");
     const [iconeCurtirPost, setIconeCurtirPost] = React.useState("heart-outline");
     const [outrasCurtidas, setOutrasCurtidas] = React.useState(props.demaisCurtidas);
+    const [numClicks, setNumClicks] = React.useState(0);
+    const [startDate, setStartDate] = React.useState(Date.now());
+    const [iconeCurtiuImg,setIconeCurtiuImg] = React.useState("");
+
     function salvarPost() {
-        if(iconeSalvarPost === "bookmark-outline"){
+        if (iconeSalvarPost === "bookmark-outline") {
             setIconeSalvarPost("bookmark");
         } else {
             setIconeSalvarPost("bookmark-outline");
@@ -15,20 +19,29 @@ export default function Post(props) {
     function curtirPost() {
         if (iconeCurtirPost === "heart-outline") {
             setIconeCurtirPost("heart");
-            const acrescentaCurtida = (Number( outrasCurtidas.replace(".","") ) + 1).toLocaleString("pt-BR");
+            const acrescentaCurtida = (Number(outrasCurtidas.replace(".", "")) + 1).toLocaleString("pt-BR");
             setOutrasCurtidas(acrescentaCurtida);
         } else {
             setIconeCurtirPost("heart-outline");
-            const diminuiCurtida = (Number( outrasCurtidas.replace(".","") ) - 1).toLocaleString("pt-BR");
+            const diminuiCurtida = (Number(outrasCurtidas.replace(".", "")) - 1).toLocaleString("pt-BR");
             setOutrasCurtidas(diminuiCurtida);
         }
     }
 
     function curtirPostImg() {
-        if (iconeCurtirPost === "heart-outline") {
-            setIconeCurtirPost("heart");
-            const acrescentaCurtida = (Number( outrasCurtidas.replace(".","") ) + 1).toLocaleString("pt-BR");
-            setOutrasCurtidas(acrescentaCurtida);
+        if (numClicks >= 1 && Date.now() - startDate < 500) {
+            setStartDate(Date.now());
+            setNumClicks(0);
+            if (iconeCurtirPost === "heart-outline") {
+                setIconeCurtirPost("heart");
+                const acrescentaCurtida = (Number(outrasCurtidas.replace(".", "")) + 1).toLocaleString("pt-BR");
+                setOutrasCurtidas(acrescentaCurtida);
+            }
+            setIconeCurtiuImg("curtiu-img");
+            setTimeout(() => setIconeCurtiuImg(""),500);
+        } else {
+            setStartDate(Date.now());
+            setNumClicks(numClicks + 1);
         }
     }
 
@@ -46,6 +59,7 @@ export default function Post(props) {
 
             <div className="conteudo">
                 <img data-test="post-image" src={props.imgPost} onClick={curtirPostImg} />
+                <div className={iconeCurtiuImg}><ion-icon name="heart"></ion-icon></div>
             </div>
 
             <div className="fundo">

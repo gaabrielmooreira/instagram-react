@@ -180,8 +180,34 @@ body {
   cursor: pointer;
 }
 
+.post .conteudo {
+  position: relative;
+}
+
 .post .conteudo img {
   width: 100%;
+}
+
+.post .conteudo ion-icon[name="heart"]{
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  top:0;
+  bottom:0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  font-size: 120px;
+  scale: 0.2;
+  color:#FFF;
+  visibility: hidden;
+  transition: scale 300ms;
+}
+
+.post .conteudo .curtiu-img ion-icon[name="heart"]{
+  visibility: visible;
+  scale: 1;
 }
 
 .post .fundo .acoes {
